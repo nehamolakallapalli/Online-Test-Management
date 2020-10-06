@@ -43,9 +43,10 @@ public class QuestionServiceImpl implements IQuestionService
 	}
 	
 	@Override
-	public Question deleteQuestion(long questionId) {
+	public void deleteQuestion(long questionId) {
+		findQuestionById(questionId);
 		dao.deleteById(questionId);
-		return null;
+		
 	}
 	
 	@Override

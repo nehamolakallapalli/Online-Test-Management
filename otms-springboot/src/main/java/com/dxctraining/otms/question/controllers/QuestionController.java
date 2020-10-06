@@ -21,16 +21,16 @@ public class QuestionController
 	@Autowired
 	private QuestionUtil questionUtil;
 	
-	@GetMapping("/get/{id}")
+	@GetMapping("/getquestion/{questionId}")
 	@ResponseStatus(HttpStatus.OK)
-	public QuestionDto findQuestionById(@PathVariable("questionId") int questionId) 
+	public QuestionDto findQuestionById(@PathVariable("questionId") long questionId) 
 	{
 		Question question = questionService.findQuestionById(questionId);
 		QuestionDto response = questionUtil.questionDto(question);
 		return response;
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/addquestion")
 	@ResponseStatus(HttpStatus.CREATED)
 	public QuestionDto addQuestion(@RequestBody CreateQuestionRequest requestData) {
 		Question question=new Question(requestData.getQuestionId(),
@@ -54,13 +54,12 @@ public class QuestionController
 				return response;
 	}
 	
-	@DeleteMapping("/delete")
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public QuestionDto deleteQuestion(@PathVariable("questionId") long questionId) 
+	@DeleteMapping("/deletequestion/{questionId}")
+	@ResponseStatus(HttpStatus.OK)
+	public void deleteQuestion(@PathVariable("questionId") long questionId) 
 	{
-		Question question = questionService.deleteQuestion(questionId);
-		QuestionDto response = questionUtil.questionDto(question);
-		return response;
+		questionService.deleteQuestion(questionId);
+		
 	}
 	
 	@GetMapping("/allQuestions")

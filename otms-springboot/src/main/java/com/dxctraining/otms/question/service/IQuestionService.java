@@ -8,7 +8,7 @@ public interface IQuestionService
 	Question findQuestionById(long questionId);
 	Question addQuestion(Question question);
 	Question updateQuestion(Question question);
-	Question deleteQuestion(long questionId);
+	void deleteQuestion(long questionId);
 	List<Question> listOfQuestions();
 	
 }
