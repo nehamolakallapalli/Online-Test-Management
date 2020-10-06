@@ -41,7 +41,7 @@ public class QuestionController
 		QuestionDto response = questionUtil.questionDto(question);
 		return response;
 	}
-	@PutMapping("/update")
+	@PutMapping("/updatequestion")
 	@ResponseStatus(HttpStatus.OK)
 	public QuestionDto updateQuestion(@RequestBody UpdateQuestionRequest requestData)
 	{
